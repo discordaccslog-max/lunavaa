@@ -1,32 +1,18 @@
-import { useEffect, useState } from "react";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
-import { cn } from "@/lib/utils";
 import SaleBanner from "./SaleBanner";
 import PresentedBy from "./PresentedBy";
 
 const Navbar = ({ introReady = true }: { introReady?: boolean }) => {
   const { totalItems, setIsOpen } = useCart();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <>
       <SaleBanner />
 
-      <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
+      <header className="relative z-40 px-3 pt-3 sm:px-5">
         <nav
           aria-label="Main"
-          className={cn(
-            "container mx-auto flex h-[4.5rem] items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6",
-            scrolled ? "glass shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]" : "border border-transparent",
-          )}
+          className="container mx-auto flex h-[4.5rem] items-center justify-between px-4 sm:px-6"
         >
           <PresentedBy show={introReady} />
 
