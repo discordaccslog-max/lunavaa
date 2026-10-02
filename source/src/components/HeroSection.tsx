@@ -3,18 +3,21 @@ import { ArrowRight, BadgeCheck, CalendarCheck, Check, Shield, Users } from "luc
 import { CHECKOUT_URL } from "@/config/site";
 import { formatPrice } from "@/config/sale";
 import { useSale } from "@/hooks/use-sale";
+import PresentedBy from "./PresentedBy";
 
 const TRUST_POINTS = ["Instant email delivery", "Lifetime access", "24/7 support"];
 
 /** Staggered entrance on page load (pair with `animate-rise`). */
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
 
-const HeroSection = () => {
+const HeroSection = ({ introReady = true }: { introReady?: boolean }) => {
   const { active, price, regularPrice } = useSale();
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-10rem)] flex-col items-center justify-center px-6 pb-24 pt-16 text-center sm:pt-20">
+      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-10rem)] flex-col items-center justify-center px-6 pb-24 pt-12 text-center sm:pt-14">
+        <PresentedBy show={introReady} className="mb-10" />
+
         {/* Highlight label */}
         <p
           style={delay(50)}
@@ -31,7 +34,7 @@ const HeroSection = () => {
           style={delay(150)}
           className="font-display max-w-5xl animate-rise text-balance text-[3.1rem] leading-[0.98] text-white sm:text-7xl lg:text-[6.5rem]"
         >
-          World's #1 Most Trusted <em className="text-aurora animate-shimmer pr-2 italic">Valorant</em> Provider
+          #1 Leading <em className="text-aurora animate-shimmer pr-2 italic">Valorant</em> Provider Since 2024
         </h1>
 
         <p

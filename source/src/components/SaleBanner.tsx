@@ -1,4 +1,4 @@
-import { ArrowRight, Flame } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SALE, SALE_PERCENT_OFF, formatPrice } from "@/config/sale";
 import { useSale } from "@/hooks/use-sale";
 import { InlineCountdown } from "./CountdownTimer";
@@ -16,8 +16,7 @@ const SaleBanner = () => {
       {/* light sweep */}
       <span className="pointer-events-none absolute inset-y-0 left-0 w-1/3 animate-sweep bg-gradient-to-r from-transparent via-white/25 to-transparent" />
       <div className="container relative mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1 px-4 py-2.5 text-center text-xs sm:text-sm">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-black/25 px-2.5 py-0.5 font-semibold uppercase tracking-[0.16em] ring-1 ring-white/30">
-          <Flame className="h-3.5 w-3.5" aria-hidden="true" />
+        <span className="inline-flex items-center rounded-full bg-black/25 px-3 py-0.5 font-semibold uppercase tracking-[0.16em] ring-1 ring-white/30">
           {SALE.label} · {SALE_PERCENT_OFF}% off
         </span>
         <span className="font-medium">

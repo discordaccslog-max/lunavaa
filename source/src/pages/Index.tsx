@@ -8,17 +8,20 @@ import StatusNotification from "@/components/StatusNotification";
 import LiveStats from "@/components/LiveStats";
 import NoticePopup from "@/components/NoticePopup";
 import SmokeBackground from "@/components/SmokeBackground";
+import { useState } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
   useReveal();
+  // The "Presented by LunaVal" intro plays once the notice popup is dismissed.
+  const [introReady, setIntroReady] = useState(false);
   return (
     <div className="relative min-h-screen">
       <SmokeBackground />
-      <NoticePopup />
+      <NoticePopup onClose={() => setIntroReady(true)} />
       <Navbar />
       <StatusNotification />
-      <HeroSection />
+      <HeroSection introReady={introReady} />
       <FeaturesSection />
       <PricingSection />
       <TrustpilotSection />

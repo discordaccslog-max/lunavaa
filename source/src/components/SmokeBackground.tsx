@@ -25,7 +25,6 @@ precision mediump float;
 #endif
 uniform vec2 u_res;
 uniform float u_time;
-uniform float u_scroll;
 
 #define SPEED 0.06
 #define BRIGHTNESS 0.7
@@ -61,7 +60,7 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_res.y;
   float t = u_time * SPEED;
 
-  vec2 p = uv * 1.4 + vec2(t * 0.6, t * 0.25 + u_scroll * 0.35);
+  vec2 p = uv * 1.4 + vec2(t * 0.6, t * 0.25);
   vec2 q = vec2(fbm(p + vec2(0.0, t)), fbm(p + vec2(5.2, 1.3) - t));
   vec2 r = vec2(fbm(p + 3.8 * q + vec2(1.7, 9.2) + 0.2 * t), fbm(p + 3.8 * q + vec2(8.3, 2.8) - 0.15 * t));
   float f = fbm(p + 3.8 * r);
@@ -115,7 +114,6 @@ const SmokeBackground = () => {
 
     const uRes = gl.getUniformLocation(prog, "u_res");
     const uTime = gl.getUniformLocation(prog, "u_time");
-    const uScroll = gl.getUniformLocation(prog, "u_scroll");
 
     const SCALE = 0.5;
     const resize = () => {
@@ -128,14 +126,10 @@ const SmokeBackground = () => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const start = performance.now();
     let frame = 0;
-    let scroll = 0;
 
     const draw = (now: number) => {
-      // Ease toward the scroll position so the smoke drifts with the page.
-      scroll += (window.scrollY / Math.max(window.innerHeight, 1) - scroll) * 0.05;
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uTime, (now - start) / 1000 + 30);
-      gl.uniform1f(uScroll, scroll);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       if (!reduceMotion && !document.hidden) frame = requestAnimationFrame(draw);
     };
