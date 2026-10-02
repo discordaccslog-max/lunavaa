@@ -40,7 +40,7 @@ const TrustpilotSection = () => {
 
             <div className="flex flex-col items-center gap-2">
               <div className="flex items-baseline gap-2">
-                <span className="font-display text-4xl font-bold text-foreground">4.8</span>
+                <span className="font-display text-4xl font-bold text-foreground">4.7</span>
                 <span className="text-muted-foreground text-lg">/ 5</span>
               </div>
               <StarRating rating={4.8} />
