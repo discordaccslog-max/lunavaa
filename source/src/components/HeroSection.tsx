@@ -1,23 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BadgeCheck, CalendarCheck, Check, Shield, Users } from "lucide-react";
-import { CHECKOUT_URL } from "@/config/site";
 import { formatPrice } from "@/config/sale";
 import { useSale } from "@/hooks/use-sale";
-import PresentedBy from "./PresentedBy";
 
 const TRUST_POINTS = ["Instant email delivery", "Lifetime access", "24/7 support"];
 
 /** Staggered entrance on page load (pair with `animate-rise`). */
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
 
-const HeroSection = ({ introReady = true }: { introReady?: boolean }) => {
+const HeroSection = () => {
   const { active, price, regularPrice } = useSale();
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-10rem)] flex-col items-center justify-center px-6 pb-24 pt-12 text-center sm:pt-14">
-        <PresentedBy show={introReady} className="mb-10" />
-
+      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-10rem)] flex-col items-center justify-center px-6 pb-24 pt-16 text-center sm:pt-20">
         {/* Highlight label */}
         <p
           style={delay(50)}
@@ -50,7 +46,7 @@ const HeroSection = ({ introReady = true }: { introReady?: boolean }) => {
           className="mt-11 flex w-full animate-rise flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
         >
           <Button variant="aurora" size="xl" className="group w-full sm:w-auto" asChild>
-            <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+            <a href="#pricing">
               Buy Now ·{" "}
               {active && <span className="font-normal text-white/70 line-through">{formatPrice(regularPrice)}</span>}
               {formatPrice(price)}

@@ -19,9 +19,9 @@ const Index = () => {
     <div className="relative min-h-screen">
       <SmokeBackground />
       <NoticePopup onClose={() => setIntroReady(true)} />
-      <Navbar />
+      <Navbar introReady={introReady} />
       <StatusNotification />
-      <HeroSection introReady={introReady} />
+      <HeroSection />
       <FeaturesSection />
       <PricingSection />
       <TrustpilotSection />

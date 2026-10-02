@@ -3,8 +3,9 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
 import SaleBanner from "./SaleBanner";
+import PresentedBy from "./PresentedBy";
 
-const Navbar = () => {
+const Navbar = ({ introReady = true }: { introReady?: boolean }) => {
   const { totalItems, setIsOpen } = useCart();
   const [scrolled, setScrolled] = useState(false);
 
@@ -23,14 +24,11 @@ const Navbar = () => {
         <nav
           aria-label="Main"
           className={cn(
-            "container mx-auto flex h-16 items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6",
+            "container mx-auto flex h-[4.5rem] items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6",
             scrolled ? "glass shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]" : "border border-transparent",
           )}
         >
-          <a href="#top" className="font-display text-3xl leading-none tracking-tight">
-            <span className="text-foreground">Luna</span>
-            <span className="text-aurora italic">Val</span>
-          </a>
+          <PresentedBy show={introReady} />
 
           <div className="flex items-center gap-2 md:gap-8">
             <div className="hidden items-center gap-8 md:flex">
