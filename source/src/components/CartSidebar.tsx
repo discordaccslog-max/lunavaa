@@ -2,6 +2,7 @@ import { ShoppingCart, X, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import PayPalCardButton from "@/components/PayPalButton";
+import SecuredByPayPal from "@/components/SecuredByPayPal";
 
 const CartSidebar = () => {
   const { items, removeItem, clearCart, totalItems, isOpen, setIsOpen } = useCart();
@@ -90,12 +91,10 @@ const CartSidebar = () => {
               </div>
               <Button variant="hero" size="lg" className="w-full" asChild>
                 <a href="https://valunacheckout.com" target="_blank" rel="noopener noreferrer">
-                  Checkout with Shopify
+                  Checkout
                 </a>
               </Button>
-              <p className="text-center text-xs text-muted-foreground flex items-center justify-center gap-1.5">
-                🔒 Secured by Shopify
-              </p>
+              <SecuredByPayPal className="justify-center" />
               <button
                 onClick={clearCart}
                 className="w-full text-xs text-muted-foreground hover:text-destructive transition-colors"

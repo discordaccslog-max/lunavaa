@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Check, Flame, Lock, ShoppingCart, Star } from "lucide-react";
+import { Check, Flame, ShoppingCart, Star } from "lucide-react";
 import jettImage from "@/assets/jett-product.webp";
 import { useCart } from "@/contexts/CartContext";
 import { CHECKOUT_URL } from "@/config/site";
 import { SALE, SALE_PERCENT_OFF, SALE_SAVINGS, formatPrice } from "@/config/sale";
 import { useSale } from "@/hooks/use-sale";
 import CountdownTimer from "./CountdownTimer";
+import SecuredByPayPal from "./SecuredByPayPal";
 
 const product = {
   name: "Luna Unlock All",
@@ -129,9 +130,7 @@ const PricingSection = () => {
                   Add to Cart
                 </Button>
               </div>
-              <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground sm:justify-start">
-                <Lock className="h-3.5 w-3.5" aria-hidden="true" /> Secured by Shopify
-              </p>
+              <SecuredByPayPal className="mt-4 justify-center sm:justify-start" />
             </div>
           </div>
         </div>

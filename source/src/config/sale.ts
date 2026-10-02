@@ -3,7 +3,7 @@
  * discount banner, the countdown and the sale price. After that it switches
  * back to `regularPrice` automatically — no redeploy needed.
  *
- * Make sure the checkout (Shopify) charges the same price shown here.
+ * Make sure the checkout charges the same price shown here.
  */
 export const SALE = {
   label: "October Sale",
