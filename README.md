@@ -13,6 +13,23 @@ This folder contains your finished website, ready to host for free with GitHub P
 7. Wait 1–2 minutes. Your site will be live at:
    `https://YOUR-USERNAME.github.io/lunaval/`
 
+## Editing the site
+
+The files at the top of this repo are the finished, ready-to-host build. The editable source code lives in `source/`.
+
+```bash
+cd source
+npm install
+npm run dev            # preview at http://localhost:8080
+npm run publish-site   # rebuild and copy the result to the repo root
+```
+
+Then commit and push. Handy places to edit:
+
+- `source/src/config/sale.ts`: sale price, regular price, sale name and end date. After the end date the site goes back to the regular price by itself. Make sure your Shopify checkout charges the same price.
+- `source/src/config/site.ts`: checkout link.
+- `source/src/components/StatusNotification.tsx`: system status "last updated" date.
+
 ## Notes
 
 - If someone visits a page link that doesn't exist, they are automatically sent to the homepage.
